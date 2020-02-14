@@ -2,11 +2,23 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}JeanMi formation{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
     </head>
+    <header>
+        {% block header %}
+        <h1>JeanMi Formation </h1>
+        <nav>
+            <a href="/session">Sessions</a>
+            <a href="/stagiaire">Stagiaires</a>
+        </nav>
+        {% endblock %}
+    </header>
     <body>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
+    <footer>
+        {% block footer %}All rigth own by Jean-Michel Casaubon 1965-2020 {% endblock %}
+    </footer>
 </html>

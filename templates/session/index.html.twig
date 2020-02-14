@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Session Formation{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Listing des sessions de formation </h1>
+    <table>    
+        <tr>
+            <th>Intitulé Session</th>
+            <th>Date de début</th>
+            <th>Date de fin</th>
+            <th>Nb places théorique</th>
+            <th>Nb places réservées</th>
+            <th>Nb places restantes</th>
+            <th>Détails programme</th>
+        </tr> 
+        {% for session in sessions %}
+    
+        <tr>
+            <td>{{session.nomSession}}</td>
+            <td>{{session.dateDebut|date("d/m/Y")}}</td>
+            <td>{{session.dateFin|date("d/m/Y")}}</td>
+            <td>{{session.nbPlaces}}</td>
+            <td>calcule a faire</td>
+            <td>calcule a faire</td>
+            <td><a href= "{{path('session_info',{'id':session.id}) }}">More info </td>
+        </tr>
+        
+        {% endfor %}
+    </table>
+    
+</div>
+{% endblock %}
