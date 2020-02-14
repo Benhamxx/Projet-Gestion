@@ -1,20 +1,56 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Hello StagiaireController!{% endblock %}
-
-{% block body %}
+{% extends 'base.html.twig' %} {% block title %}Hello StagiaireController!{% endblock %} {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .example-wrapper {
+        margin: 1em auto;
+        max-width: 800px;
+        width: 95%;
+        font: 18px/1.5 sans-serif;
+    }
+    
+    .example-wrapper code {
+        background: #F5F5F5;
+        padding: 2px 6px;
+    }
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h2>Fiche stagiaire</h2>
+    <h3><img src="{{ asset('img/dino.jpg') }}" width="50px" height="50px">{{stagiaire.nom ~ ' ' ~ stagiaire.prenom}}</h3>
+    <table>
+        <tr>
+            <th>Sexe :</th>
+            <td>{{stagiaire.sexe}}</td>
+        </tr>
+        <tr>
+            <th>Date de naissance :</th>
+            <td>{{stagiaire.dateNaissance |date("d/m/y")}}</td>
+        </tr>
+        <tr>
+            <th>Ville :</th>
+            <td>{{stagiaire.ville}}</td>
+        </tr>
+        <tr>
+            <th>Mail :</th>
+            <td>{{stagiaire.mail}}</td>
+        </tr>
+        <tr>
+            <th>Telephone :</th>
+            <td>{{stagiaire.telephone}}</td>
+        </tr>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/laragon/www/GestionSession/src/Controller/StagiaireController.php'|file_link(0) }}">src/Controller/StagiaireController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/laragon/www/GestionSession/templates/stagiaire/index.html.twig'|file_link(0) }}">templates/stagiaire/index.html.twig</a></code></li>
-    </ul>
+    </table>
+
+    <h3>Sessions prévues</h3>
+    <table>
+        {% for session in stagiaire.sessions %}
+        <tr>
+            <th>{{session.nomSession ~' '~ 'du ' ~ session.dateDebut |date("d/m/y") ~' '~ 'au ' ~ session.dateFin |date("d/m/y") }}</th>
+        </tr>
+        {% endfor %}
+    </table>
+
+
+
+
 </div>
 {% endblock %}
